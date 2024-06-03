@@ -35,7 +35,8 @@ public class JwtService {
         System.out.println(" inside jwtservice extraclaim after extractclaim printing claims firstname "
                 + claims.get("last_name"));
         System.out
-                .println(" inside jwtservice extraclaim after extractclaim printing claims  role  " + claims.get("role"));
+                .println(" inside jwtservice extraclaim after extractclaim printing claims  role  "
+                        + claims.get("role"));
 
         return claimsResolver.apply(claims);
     }
@@ -59,7 +60,7 @@ public class JwtService {
                 // .setPayload("role:"+userDetails.)
                 // .setPayload(userDetails.toString())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + 5000 * 60 * 24))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DemoController {
     @GetMapping
     public ResponseEntity<String> sayHello() {
-        return ResponseEntity.ok("Welcome to Home Page");
+        return ResponseEntity.ok("Welcome to Quiz Home Page");
     }
 
 }

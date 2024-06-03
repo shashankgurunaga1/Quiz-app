@@ -55,6 +55,8 @@ public class UserControllers {
     @PreAuthorize("hasAuthority('admin:update')")
     public User updateUser(@PathVariable(value = "user_id") Integer user_id, @RequestBody User users) {
         System.out.println("inside Usercontrollers update user info " + user_id);
+        System.out.println("inside Usercontrollers update user info " + users);
+
         return u_service.updateUser(user_id, users);
 
         /*

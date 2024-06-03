@@ -46,6 +46,9 @@ public class AuthenticationService {
 
         public AuthenticationResponse authenticate(AuthenticationRequest request) {
                 System.out.println("in authenticationservice java: authenticate");
+                System.out.println("in authenticationservice java: authenticate  "+ request.getEmail());
+                System.out.println("in authenticationservice java: authenticate  "+ request.getPasswrd());
+
                 authenticationManager.authenticate(
                                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPasswrd()));
 

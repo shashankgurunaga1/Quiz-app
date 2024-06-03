@@ -29,7 +29,7 @@ public class UserServices {
 
     public User updateUser(Integer user_id, User users) {
         System.out.println("inside UserServices.java update , print userid " + user_id);
-
+        
         User id = user_repo.findById(user_id).get();
         id.setFirst_name(users.getFirst_name());
         id.setLast_name(users.getLast_name());

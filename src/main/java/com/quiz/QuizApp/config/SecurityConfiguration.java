@@ -42,7 +42,10 @@ public class SecurityConfiguration {
         .csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/api/v1/auth/**").permitAll()
-            //.requestMatchers("/quiz/updateuserinfo/**").permitAll()
+            .requestMatchers("/questions/**").permitAll()
+            .requestMatchers("/questions/update_questions/**").permitAll()
+           .requestMatchers("/questions/delete_questions/**").permitAll()
+             .requestMatchers("/quiz/updateuserinfo/**").permitAll()
             .requestMatchers("/api/v1/user-controller").hasAnyRole(ADMIN.name(), USER.name())
             .requestMatchers(GET, "/api/v1/user-controller")
             .hasAnyAuthority(ADMIN_READ.name(), USER_READ.name())
@@ -57,17 +60,18 @@ public class SecurityConfiguration {
             .requestMatchers("/quiz/deleteuserinfo/**").hasAnyRole(ADMIN.name())
             // .requestMatchers("/quiz/updateuserinfo").hasAnyRole(ADMIN.name())
             .requestMatchers(GET, "/quiz/getuserinfo").hasAnyAuthority(ADMIN_READ.name())
-           // .requestMatchers(POST, "/quiz/adduser").hasAnyAuthority(ADMIN_WRITE.name())
+            // .requestMatchers(POST, "/quiz/adduser").hasAnyAuthority(ADMIN_WRITE.name())
             // .requestMatchers(PUT,
             // "/quiz/updateuserinfo").hasAnyAuthority(ADMIN_UPDATE.name())
             // .requestMatchers(PUT,
             // "/quiz/updateuserinfo/**").hasAnyAuthority(ADMIN_UPDATE.name())
-           // .requestMatchers(DELETE, "/quiz/deleteuserinfo/**").hasAnyAuthority(ADMIN_DELETE.name())
+            // .requestMatchers(DELETE,
+            // "/quiz/deleteuserinfo/**").hasAnyAuthority(ADMIN_DELETE.name())
 
             .anyRequest().authenticated())
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .build();
 
     // return http.build();
